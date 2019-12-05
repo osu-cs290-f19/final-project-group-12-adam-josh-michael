@@ -1,0 +1,27 @@
+{
+  "name": "final-project-group-12-adam-josh-michael",
+  "version": "1.0.0",
+  "description": "A simple web app to play battleship",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "handlebars -f public/easyTemplate.js views/partials/easy.handlebars",
+    "prestart": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-f19/final-project-group-12-adam-josh-michael.git"
+  },
+  "author": "Adam Josh Michael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-f19/final-project-group-12-adam-josh-michael/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-f19/final-project-group-12-adam-josh-michael#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.5.3"
+  }
+}
