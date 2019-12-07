@@ -18,10 +18,10 @@ app.use(bodyParser.text());
 app.use(express.static("public"));
 
 //load in all gamebaords
-var easyGameboard = require("./gameboards/easy");
+var mediumGameboard = require("./gameboards/medium");
 
 //post requests
-app.post("/updateeasygameboard", function(req, res, next){
+app.post("/updategameboard", function(req, res, next){
   //first id string is sent then a space then the class string
 
   if(req.body){
@@ -64,11 +64,6 @@ app.post("/updateeasygameboard", function(req, res, next){
     console.log("==Json data: ", easyGameboard[myNumber].pointClass5);
     easyGameboard[myNumber].pointClass5 = easyGameboard[myNumber].pointClass5 + newClass;
   }
-  if(buttonCoordinates[1] == 6){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass6);
-    easyGameboard[myNumber].pointClass6 = easyGameboard[myNumber].pointClass6 + newClass;
-  }
-  
 
 });
 
@@ -80,10 +75,10 @@ app.get("/newgame", function(req, res) {
   res.status(200).render(__dirname + "/public/newGame");
 });
 
-app.get("/gameeasy", function(req, res) {
-  res.status(200).render(__dirname + "/public/gameEasy", { easyGameboard });
+app.get("/gamemedium", function(req, res) {
+  res.status(200).render(__dirname + "/public/gameMedium", { mediumGameboard });
 
-  console.log(easyGameboard[0].pointClass0);
+  console.log(mediumGameboard[0].pointClass0);
 });
 
 app.get("*", function(req, res) {
