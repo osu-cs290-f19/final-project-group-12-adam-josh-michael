@@ -1,6 +1,10 @@
 [
   {
-    "pointClass": "pointEasy",
+    "pointClass0": "point pointEasy",
+    "pointClass1": "point pointEasy",
+    "pointClass2": "point pointEasy",
+    "pointClass3": "point pointEasy",
+    "pointClass4": "point pointEasy",
     "pointID0": "0,0",
     "pointID1": "0,1",
     "pointID2": "0,2",
@@ -8,7 +12,11 @@
     "pointID4": "0,4"
   },
   {
-    "pointClass": "pointEasy",
+    "pointClass0": "point pointEasy",
+    "pointClass1": "point pointEasy",
+    "pointClass2": "point pointEasy",
+    "pointClass3": "point pointEasy",
+    "pointClass4": "point pointEasy",
     "pointID0": "1,0",
     "pointID1": "1,1",
     "pointID2": "1,2",
@@ -16,7 +24,11 @@
     "pointID4": "1,4"
   },
   {
-    "pointClass": "pointEasy",
+    "pointClass0": "point pointEasy",
+    "pointClass1": "point pointEasy",
+    "pointClass2": "point pointEasy",
+    "pointClass3": "point pointEasy",
+    "pointClass4": "point pointEasy",
     "pointID0": "2,0",
     "pointID1": "2,1",
     "pointID2": "2,2",
@@ -24,7 +36,11 @@
     "pointID4": "2,4"
   },
   {
-    "pointClass": "pointEasy",
+    "pointClass0": "point pointEasy",
+    "pointClass1": "point pointEasy",
+    "pointClass2": "point pointEasy",
+    "pointClass3": "point pointEasy",
+    "pointClass4": "point pointEasy",
     "pointID0": "3,0",
     "pointID1": "3,1",
     "pointID2": "3,2",
@@ -32,7 +48,11 @@
     "pointID4": "3,4"
   },
   {
-    "pointClass": "pointEasy",
+    "pointClass0": "point pointEasy",
+    "pointClass1": "point pointEasy",
+    "pointClass2": "point pointEasy",
+    "pointClass3": "point pointEasy",
+    "pointClass4": "point pointEasy battleship1",
     "pointID0": "4,0",
     "pointID1": "4,1",
     "pointID2": "4,2",

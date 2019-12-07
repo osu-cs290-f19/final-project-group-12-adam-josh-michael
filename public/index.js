@@ -1,68 +1,77 @@
-// Pseudocode - Not Complete
-
-// Clicked button should have a few properties
-// Clicked array value / coors
-// Clicked value
-// Button value - battleship [ 1, 2, 3 ] or not
-
-// Array should be blank and filled throughout
-
-var gameDifficulty = ". . .";
-if (gameDifficulty = easy) {
-    gameDifficulty = 4;
-}
-else if (gameDifficulty = medium) {
-    gameDifficulty = 5;
-}
-else {
-    gameDifficulty = 6;
-}
-
-var gameboard = [gameDifficulty][gameDifficulty];
-for (var x = 0; x < gameDifficulty; x++){
-    for (var y = 0; y < gameDifficulty; y++){
-        // Fill in gameboard with the current playing gameboard
+//event listener
+document.addEventListener('click', function (event) {
+    var clickedPoint = event.target;
+    if ( clickedPoint.classList.contains( 'point' ) ) {
+        handleBattleshipClick(clickedPoint);
     }
-}
-
-var hitvalue = clickedButton.value; // Battleship: 1,2,3    Miss: 9
-var clickedX = clickedButtonCoors.x;
-var clickedY = clickedButtonCoors.y;
-var clickedAgain = false;
-var hitCounter = 0;
+}, false);
 
 
 
-function handleBattleshipClick(event) {
+// // Pseudocode - Not Complete
+
+// // Clicked button should have a few properties
+// // Clicked array value / coors
+// // Clicked value
+// // Button value - battleship [ 1, 2, 3 ] or not
+
+// // Array should be blank and filled throughout
+
+// var gameDifficulty = ". . .";
+// if (gameDifficulty = easy) {
+//     gameDifficulty = 5;
+// }
+// else if (gameDifficulty = medium) {
+//     gameDifficulty = 6;
+// }
+// else {
+//     gameDifficulty = 7;
+// }
+
+// var gameboard = [gameDifficulty][gameDifficulty];
+// for (var x = 0; x < gameDifficulty; x++){
+//     for (var y = 0; y < gameDifficulty; y++){
+//         // Fill in gameboard with the current playing gameboard
+//     }
+// }
+
+// var hitvalue = clickedButton.value; // Battleship: 1,2,3    Miss: 9
+// var clickedX = clickedButtonCoors.x;
+// var clickedY = clickedButtonCoors.y;
+// var clickedAgain = false;
+// var hitCounter = 0;
+
+
+
+function handleBattleshipClick(clickedPoint) {
     // if clicked again is true then stop check and alert user
 
-    if (!checkIfBattleship(gameboard)) {
-        var clickValue = 0;
-        // change clicked button color
-        gameboard = updateGB(gameboard, clickValue);
-        movesLeft = movesLeft - 1;
-        checkMoves(movesLeft);
-    }
-    else{
-        var clickValue = hitValue;
-        // change clicked button color
-        gameboard = updateGB(gameboard, clickValue);
-        if (checkIfSunk){
-            if (checkWin(gameDifficulty, hitCounter)){
-                // YOU WIN
-            }
-        }
-        movesLeft = movesLeft - 1;
-        checkMoves(movesLeft);
-    }
-}
+    if ( clickedPoint.classList.contains('battleship1') || clickedPoint.classList.contains('battleship2') || clickedPoint.classList.contains('battleship3') ) {
+        clickedPoint.classList.add('hit');
 
-function checkIfBattleship(gameboard) {
-    if (gameboard[clickedX][clickedY] == 1 || gameboard[clickedX][clickedY] == 2 || gameboard[clickedX][clickedY] == 3){
-        return true;
+        //update json file
+        var postRequest = new XMLHttpRequest();
+        var requestURL = '/updateeasygameboard';
+        postRequest.open('POST', requestURL);
+        var requestBody = clickedPoint.id + '@ hit';//@ is the delim
+        console.log(requestBody);
+        postRequest.setRequestHeader('Content-Type', 'text/plain');
+        postRequest.send(requestBody);
+
+        // movesLeft = movesLeft - 1;
+        // checkMoves(movesLeft);
     }
     else{
-        return false;
+        // var clickValue = hitValue;
+        // // change clicked button color
+        // gameboard = updateGB(gameboard, clickValue);
+        // if (checkIfSunk){
+        //     if (checkWin(gameDifficulty, hitCounter)){
+        //         // YOU WIN
+        //     }
+        // }
+        // movesLeft = movesLeft - 1;
+        // checkMoves(movesLeft);
     }
 }
 
