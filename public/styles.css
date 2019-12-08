@@ -6,6 +6,21 @@ h1 {
   text-align: center;
 }
 
+.btn-secondary {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: red;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  right: 100px;
+}
+
+.header-title {
+  color: white;
+  background: maroon;
+}
+
 .header {
   margin: 0;
   margin-bottom: 50px;

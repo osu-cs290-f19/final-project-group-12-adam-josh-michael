@@ -68,11 +68,11 @@ app.post("/updategameboard", function(req, res, next){
 });
 
 app.get("/", function(req, res) {
-  res.status(200).render(__dirname + "/public/newGame");
+  res.status(200).render(__dirname + "/public/home");
 });
 
-app.get("/newgame", function(req, res) {
-  res.status(200).render(__dirname + "/public/newGame");
+app.get("/home", function(req, res) {
+  res.status(200).render(__dirname + "/public/home");
 });
 
 app.get("/gamemedium", function(req, res) {
