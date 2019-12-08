@@ -172,9 +172,9 @@ app.listen(port, function() {
 
 //functions
 function placeBattleship(gameboard, battleship){
-  var randomX = (int)(5.0 * Math.random());
-  var randomY = (int)(5.0 * Math.random());
-  var angle = (int)(Math.random());
+  var randomX = Math.floor(Math.random() * 5) + 1;
+  var randomY = Math.floor(Math.random() * 5) + 1;
+  var angle = Math.floor(Math.random()) + 1;
   var truePlacement = false;
 
   if (battleship == 3){
@@ -211,7 +211,7 @@ function placeBattleship(gameboard, battleship){
             }
           }
         }
-        randomX = (int)(5.0 * Math.random());
+        randomX = Math.floor(Math.random() * 5) + 1;
       }
     }
     else {
@@ -227,7 +227,7 @@ function placeBattleship(gameboard, battleship){
             }
           }
         }
-        randomY = (int)(5.0 * Math.random());
+        randomY = Math.floor(Math.random() * 5) + 1;
       }
     }
   }
@@ -239,9 +239,9 @@ function placeBattleship(gameboard, battleship){
         truePlacement = true;
         gameboard[randomX][randomY] = battleship;
       }
-      var randomX = (int)(5.0 * Math.random());
-      var randomY = (int)(5.0 * Math.random());
+      var randomX = Math.floor(Math.random() * 5) + 1;
+      var randomY = Math.floor(Math.random() * 5) + 1;
     }
   }
-  
+
 }
