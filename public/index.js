@@ -7,7 +7,7 @@ document.addEventListener('click', function (event) {
 }, false);
 
 //init Gamebaord
-gblength = 6;
+var gblength = 6;
 var gameboard = Array.from(Array(gblength), () => new Array(gblength));
 for(var i = 0; i < gblength; i++){
     for(var j = 0; j < gblength; j++){
@@ -90,13 +90,6 @@ function checkMoves(movesLeft) {
     else {
         return false
     }
-}
-
-    if (counter = hitBattleship){
-        sunkValue = true;
-    }
-    
-    return sunkValue;
 }
 
 function checkWin (difficulty, hitCounter) {

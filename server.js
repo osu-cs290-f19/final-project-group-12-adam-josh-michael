@@ -76,6 +76,8 @@ app.get("/home", function(req, res) {
 });
 
 app.get("/gamemedium", function(req, res) {
+  var gblength = 6;
+  var gameboard = Array.from(Array(gblength), () => new Array(gblength));
   //insert ship placement code here
   for(var i = 0; i < gblength; i++){
     for(var j = 0; j < gblength; j++){
@@ -167,6 +169,8 @@ app.listen(port, function() {
   console.log("== Server is listening on port", port);
 });
 
+
+//functions
 function placeBattleship(gameboard, battleship){
   var randomX = (int)(5.0 * Math.random());
   var randomY = (int)(5.0 * Math.random());
