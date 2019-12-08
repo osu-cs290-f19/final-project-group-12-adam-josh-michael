@@ -6,6 +6,9 @@ document.addEventListener('click', function (event) {
     }
 }, false);
 
+//place battle ships in game board if we are in the newgame
+console.log("===URL is: ", window.location.href);
+
 
 // var gameboard = [gameDifficulty][gameDifficulty];
 // for (var x = 0; x < gameDifficulty; x++){
