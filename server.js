@@ -77,6 +77,18 @@ app.get("/home", function(req, res) {
 
 app.get("/gamemedium", function(req, res) {
   //insert ship placement code here
+  for(var i = 0; i < gblength; i++){
+    for(var j = 0; j < gblength; j++){
+        gameboard[i][j] = 0;
+    }
+  }
+  var battleship1 = 1;
+  var battleship2 = 2;
+  var battleship3 = 3;
+
+  gameboard = placeBattleship(gameboard, battleship3);
+  gameboard = placeBattleship(gameboard, battleship2);
+  gameboard = placeBattleship(gameboard, battleship1);
 
   //translation from array to json here
   for(var i = 0; i < 6; i++){
@@ -101,6 +113,46 @@ app.get("/gamemedium", function(req, res) {
           mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
         }
       }
+      if(gameboard[i][j] == 2){
+        if(j == 0){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+        if(j == 1){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+        if(j == 2){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+        if(j == 3){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+        if(j == 4){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+        if(j == 5){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+        }
+      }
+      if(gameboard[i][j] == 3){
+        if(j == 0){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+        if(j == 1){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+        if(j == 2){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+        if(j == 3){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+        if(j == 4){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+        if(j == 5){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+        }
+      }
     }
   }
 
@@ -114,3 +166,78 @@ app.get("*", function(req, res) {
 app.listen(port, function() {
   console.log("== Server is listening on port", port);
 });
+
+function placeBattleship(gameboard, battleship){
+  var randomX = (int)(5.0 * Math.random());
+  var randomY = (int)(5.0 * Math.random());
+  var angle = (int)(Math.random());
+  var truePlacement = false;
+
+  if (battleship == 3){
+    if (angle == 0) {
+      if (randomX > 3){
+        randomX = randomX - 2;
+      }
+      for (var i = 0; i < battleship; i++){
+        gameboard[randomX + i][randomY] = battleship;
+      }
+    }
+    else {
+      if (randomY > 3){
+        randomY = randomY - 2;
+      }
+      for (var i = 0; i < battleship; i++){
+        gameboard[randomX][randomY + i] = battleship;
+      }
+    }
+  }
+
+
+  if (battleship == 2){
+    if (angle == 0){
+      while(truePlacement == false){
+        if (randomX > 4){
+          randomX = randomX - 1;
+        }
+        if (gameboard[randomX][randomY] == 0){
+          if (gameboard[randomX + 1][randomY] == 0){
+            truePlacement = true;
+            for (var i = 0; i < battleship; i++){
+              gameboard[randomX + i][randomY] = battleship;
+            }
+          }
+        }
+        randomX = (int)(5.0 * Math.random());
+      }
+    }
+    else {
+      while(truePlacement == false){
+        if (randomY > 4){
+          randomY = randomY - 1;
+        }
+        if (gameboard[randomX][randomY] == 0){
+          if (gameboard[randomX][randomY + 1] == 0){
+            truePlacement = true;
+            for (var i = 0; i < battleship; i++){
+              gameboard[randomX][randomY + i] = battleship;
+            }
+          }
+        }
+        randomY = (int)(5.0 * Math.random());
+      }
+    }
+  }
+
+
+  if (battleship == 1){
+    while(truePlacement = false){
+      if (gameboard[randomX][randomY] == 0){
+        truePlacement = true;
+        gameboard[randomX][randomY] = battleship;
+      }
+      var randomX = (int)(5.0 * Math.random());
+      var randomY = (int)(5.0 * Math.random());
+    }
+  }
+  
+}
