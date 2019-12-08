@@ -41,28 +41,28 @@ app.post("/updategameboard", function(req, res, next){
   var myNumber = Number(buttonCoordinates[0]);
 
   if(buttonCoordinates[1] == 0){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass0);
-    easyGameboard[myNumber].pointClass0 = easyGameboard[myNumber].pointClass0 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass0);
+    mediumGameboard[myNumber].pointClass0 = mediumGameboard[myNumber].pointClass0 + newClass;
   }
   if(buttonCoordinates[1] == 1){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass1);
-    easyGameboard[myNumber].pointClass1 = easyGameboard[myNumber].pointClass1 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass1);
+    mediumGameboard[myNumber].pointClass1 = mediumGameboard[myNumber].pointClass1 + newClass;
   }
   if(buttonCoordinates[1] == 2){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass2);
-    easyGameboard[myNumber].pointClass2 = easyGameboard[myNumber].pointClass2 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass2);
+    mediumGameboard[myNumber].pointClass2 = mediumGameboard[myNumber].pointClass2 + newClass;
   }
   if(buttonCoordinates[1] == 3){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass3);
-    easyGameboard[myNumber].pointClass3 = easyGameboard[myNumber].pointClass3 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass3);
+    mediumGameboard[myNumber].pointClass3 = mediumGameboard[myNumber].pointClass3 + newClass;
   }
   if(buttonCoordinates[1] == 4){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass4);
-    easyGameboard[myNumber].pointClass4 = easyGameboard[myNumber].pointClass4 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass4);
+    mediumGameboard[myNumber].pointClass4 = mediumGameboard[myNumber].pointClass4 + newClass;
   }
   if(buttonCoordinates[1] == 5){
-    console.log("==Json data: ", easyGameboard[myNumber].pointClass5);
-    easyGameboard[myNumber].pointClass5 = easyGameboard[myNumber].pointClass5 + newClass;
+    console.log("==Json data: ", mediumGameboard[myNumber].pointClass5);
+    mediumGameboard[myNumber].pointClass5 = mediumGameboard[myNumber].pointClass5 + newClass;
   }
 
 });
@@ -77,8 +77,6 @@ app.get("/home", function(req, res) {
 
 app.get("/gamemedium", function(req, res) {
   res.status(200).render(__dirname + "/public/gameMedium", { mediumGameboard });
-
-  console.log(mediumGameboard[0].pointClass0);
 });
 
 app.get("*", function(req, res) {
