@@ -92,6 +92,8 @@ app.get("/gamemedium", function(req, res) {
   gameboard = placeBattleship(gameboard, battleship2);
   gameboard = placeBattleship(gameboard, battleship1);
 
+  console.log ("gameboard: ", gameboard);
+
   //translation from array to json here
   for(var i = 0; i < 6; i++){
     for(var j = 0; j < 6; j++){
@@ -177,6 +179,8 @@ function placeBattleship(gameboard, battleship){
   var angle = Math.floor(Math.random());
   var truePlacement = false;
 
+  console.log("battleship: ", battleship);
+
   if (battleship == 3){
     if (angle == 0) {
       if (randomX > 3){
@@ -232,9 +236,9 @@ function placeBattleship(gameboard, battleship){
     }
   }
 
-
   if (battleship == 1){
-    while(truePlacement = false){
+    console.log(truePlacement);
+    while(truePlacement == false){
       if (gameboard[randomX][randomY] == 0){
         truePlacement = true;
         gameboard[randomX][randomY] = battleship;
@@ -244,4 +248,5 @@ function placeBattleship(gameboard, battleship){
     }
   }
 
+  return gameboard;
 }
