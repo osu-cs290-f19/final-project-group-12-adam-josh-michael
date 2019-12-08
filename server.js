@@ -102,19 +102,19 @@ app.get("/gamemedium", function(req, res) {
           mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
         }
         if(j == 1){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship1';
         }
         if(j == 2){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship1';
         }
         if(j == 3){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship1';
         }
         if(j == 4){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship1';
         }
         if(j == 5){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship1';
         }
       }
       if(gameboard[i][j] == 2){
@@ -122,19 +122,19 @@ app.get("/gamemedium", function(req, res) {
           mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
         }
         if(j == 1){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship2';
         }
         if(j == 2){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship2';
         }
         if(j == 3){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship2';
         }
         if(j == 4){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship2';
         }
         if(j == 5){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship2';
         }
       }
       if(gameboard[i][j] == 3){
@@ -142,19 +142,19 @@ app.get("/gamemedium", function(req, res) {
           mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
         }
         if(j == 1){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship3';
         }
         if(j == 2){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship3';
         }
         if(j == 3){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship3';
         }
         if(j == 4){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship3';
         }
         if(j == 5){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship3';
         }
       }
     }
@@ -176,10 +176,12 @@ app.listen(port, function() {
 function placeBattleship(gameboard, battleship){
   var randomX = Math.floor(Math.random() * 5);
   var randomY = Math.floor(Math.random() * 5);
-  var angle = Math.floor(Math.random());
+  var angle = Math.floor(Math.random() * 2);
   var truePlacement = false;
 
-  console.log("battleship: ", battleship);
+  if (angle == 2){
+    angle = 1;
+  }
 
   if (battleship == 3){
     if (angle == 0) {
@@ -237,7 +239,6 @@ function placeBattleship(gameboard, battleship){
   }
 
   if (battleship == 1){
-    console.log(truePlacement);
     while(truePlacement == false){
       if (gameboard[randomX][randomY] == 0){
         truePlacement = true;
