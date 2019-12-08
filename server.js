@@ -41,27 +41,21 @@ app.post("/updategameboard", function(req, res, next){
   var myNumber = Number(buttonCoordinates[0]);
 
   if(buttonCoordinates[1] == 0){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass0);
     mediumGameboard[myNumber].pointClass0 = newClass;
   }
   if(buttonCoordinates[1] == 1){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass1);
     mediumGameboard[myNumber].pointClass1 = newClass;
   }
   if(buttonCoordinates[1] == 2){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass2);
     mediumGameboard[myNumber].pointClass2 = newClass;
   }
   if(buttonCoordinates[1] == 3){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass3);
     mediumGameboard[myNumber].pointClass3 = newClass;
   }
   if(buttonCoordinates[1] == 4){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass4);
     mediumGameboard[myNumber].pointClass4 = newClass;
   }
   if(buttonCoordinates[1] == 5){
-    console.log("==Json data: ", mediumGameboard[myNumber].pointClass5);
     mediumGameboard[myNumber].pointClass5 = newClass;
   }
 
