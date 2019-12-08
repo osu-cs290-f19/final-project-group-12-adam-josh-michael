@@ -6,36 +6,55 @@ document.addEventListener('click', function (event) {
     }
 }, false);
 
-//place battle ships in game board if we are in the newgame
-console.log("===URL is: ", window.location.href);
+//init Gamebaord
+gblength = 6;
+var gameboard = Array.from(Array(gblength), () => new Array(gblength));
+for(var i = 0; i < gblength; i++){
+    for(var j = 0; j < gblength; j++){
+        gameboard[i][j] = 0;
+    }
+}
 
-
-// var gameboard = [gameDifficulty][gameDifficulty];
-// for (var x = 0; x < gameDifficulty; x++){
-//     for (var y = 0; y < gameDifficulty; y++){
-//         // Fill in gameboard with the current playing gameboard
-//     }
-// }
-
-// var hitvalue = clickedButton.value; // Battleship: 1,2,3    Miss: 9
-// var clickedX = clickedButtonCoors.x;
-// var clickedY = clickedButtonCoors.y;
-// var clickedAgain = false;
-// var hitCounter = 0;
-
-
+//read into gameboard
+for(var i = 0; i < gblength; i++){
+    for(var j = 0; j < gblength; j++){
+        var idString = i.toString() + ',' + j.toString();
+        var point = document.getElementById(idString);
+        
+        if(point.classList.contains('battleship1')){
+            gameboard[i][j] = 1;
+        }
+        if(point.classList.contains('battleship2')){
+            gameboard[i][j] = 2;
+        }
+        if(point.classList.contains('battleship3')){
+            gameboard[i][j] = 3;
+        }
+    }
+}
 
 function handleBattleshipClick(clickedPoint) {
     // if clicked again is true then stop check and alert user
 
     if ( clickedPoint.classList.contains('battleship1') || clickedPoint.classList.contains('battleship2') || clickedPoint.classList.contains('battleship3') ) {
+        //add hit class for coloring
         clickedPoint.classList.add('hit');
 
+        //remove battle ship class for checking when ship is destroyed
+        if(clickedPoint.classList.contains('battleship1')){
+            clickedPoint.classList.remove('battleship1');
+        }
+        if(clickedPoint.classList.contains('battleship2')){
+            clickedPoint.classList.remove('battleship2');
+        }
+        if(clickedPoint.classList.contains('battleship2')){
+            clickedPoint.classList.remove('battleship3');
+        }
         //update json file
         var postRequest = new XMLHttpRequest();
         var requestURL = '/updategameboard';
         postRequest.open('POST', requestURL);
-        var requestBody = clickedPoint.id + '@ hit';//@ is the delim
+        var requestBody = clickedPoint.id + '@point hit';//@ is the delim
         console.log(requestBody);
         postRequest.setRequestHeader('Content-Type', 'text/plain');
         postRequest.send(requestBody);
@@ -65,25 +84,13 @@ function updateGB (currentGameboard, clickValue) {
 
 function checkMoves(movesLeft) {
     if (movesLeft == 0) {
-        // GAME OVER
+        alert("YOU LOST LOL");
         return true;
     }
     else {
         return false
     }
 }
-
-function checkIfSunk(gameboard, hitBattleship) {
-    var length = gameboard.length;
-    var counter = 0;
-    var sunkValue = false;
-
-    for (var x = 0; x < length; x++){
-        for (var y = 0; y < length; y++){
-            if (gameboard[x][y] == hitBattleship)
-                counter = counter + 1;
-        }
-    }
 
     if (counter = hitBattleship){
         sunkValue = true;

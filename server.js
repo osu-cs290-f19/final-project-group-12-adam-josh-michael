@@ -42,27 +42,27 @@ app.post("/updategameboard", function(req, res, next){
 
   if(buttonCoordinates[1] == 0){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass0);
-    mediumGameboard[myNumber].pointClass0 = mediumGameboard[myNumber].pointClass0 + newClass;
+    mediumGameboard[myNumber].pointClass0 = newClass;
   }
   if(buttonCoordinates[1] == 1){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass1);
-    mediumGameboard[myNumber].pointClass1 = mediumGameboard[myNumber].pointClass1 + newClass;
+    mediumGameboard[myNumber].pointClass1 = newClass;
   }
   if(buttonCoordinates[1] == 2){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass2);
-    mediumGameboard[myNumber].pointClass2 = mediumGameboard[myNumber].pointClass2 + newClass;
+    mediumGameboard[myNumber].pointClass2 = newClass;
   }
   if(buttonCoordinates[1] == 3){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass3);
-    mediumGameboard[myNumber].pointClass3 = mediumGameboard[myNumber].pointClass3 + newClass;
+    mediumGameboard[myNumber].pointClass3 = newClass;
   }
   if(buttonCoordinates[1] == 4){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass4);
-    mediumGameboard[myNumber].pointClass4 = mediumGameboard[myNumber].pointClass4 + newClass;
+    mediumGameboard[myNumber].pointClass4 = newClass;
   }
   if(buttonCoordinates[1] == 5){
     console.log("==Json data: ", mediumGameboard[myNumber].pointClass5);
-    mediumGameboard[myNumber].pointClass5 = mediumGameboard[myNumber].pointClass5 + newClass;
+    mediumGameboard[myNumber].pointClass5 = newClass;
   }
 
 });
@@ -76,6 +76,34 @@ app.get("/home", function(req, res) {
 });
 
 app.get("/gamemedium", function(req, res) {
+  //insert ship placement code here
+
+  //translation from array to json here
+  for(var i = 0; i < 6; i++){
+    for(var j = 0; j < 6; j++){
+      if(gameboard[i][j] == 1){
+        if(j == 0){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+        if(j == 1){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+        if(j == 2){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+        if(j == 3){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+        if(j == 4){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+        if(j == 5){
+          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+        }
+      }
+    }
+  }
+
   res.status(200).render(__dirname + "/public/gameMedium", { mediumGameboard });
 });
 
