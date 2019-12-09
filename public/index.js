@@ -33,8 +33,17 @@ for(var i = 0; i < gblength; i++){
     }
 }
 
+//initializing counter
+var count = 24;
+var counter = document.getElementById("counter");
+counter.innerHTML = "Moves: " + count;
+
 function handleBattleshipClick(clickedPoint) {
     // if clicked again is true then stop check and alert user
+
+    //counter
+    count -=1;
+    counter.innerHTML = "Moves: " + count;
 
     if ( clickedPoint.classList.contains('battleship1') || clickedPoint.classList.contains('battleship2') || clickedPoint.classList.contains('battleship3') ) {
         //add hit class for coloring

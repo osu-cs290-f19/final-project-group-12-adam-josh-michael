@@ -80,3 +80,22 @@ h1 {
 .bottomText {
   margin-top: 30px;
 }
+
+#counter {
+  float: left;
+}
+
+#saveGame {
+  float: right;
+}
+
+button {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: transparent;
+  text-shadow: 1px 1px 1px #202020;
+  font-family: "Lato", sans-serif;
+  font-size: 18pt;
+  border: 1px solid #561D25;
+  color: #561D25;
+}
