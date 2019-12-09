@@ -43,12 +43,24 @@ function handleBattleshipClick(clickedPoint) {
         //remove battle ship class for checking when ship is destroyed
         if(clickedPoint.classList.contains('battleship1')){
             clickedPoint.classList.remove('battleship1');
+            alert("Battleship 1 has been sunk");
+            checkIfWon(6);
         }
         if(clickedPoint.classList.contains('battleship2')){
             clickedPoint.classList.remove('battleship2');
+            console.log(clickedPoint.classList);
+            if(checkIfSunk(2,6) == true){
+                console.log("ship 2 sunk");
+                checkIfWon(6);
+            }
         }
-        if(clickedPoint.classList.contains('battleship2')){
+        if(clickedPoint.classList.contains('battleship3')){
             clickedPoint.classList.remove('battleship3');
+            console.log(clickedPoint.classList);
+            if(checkIfSunk(3,6) == true){
+                console.log("ship 3 sunk");
+                checkIfWon(6);
+            }
         }
         //update json file
         var postRequest = new XMLHttpRequest();
@@ -58,32 +70,25 @@ function handleBattleshipClick(clickedPoint) {
         console.log(requestBody);
         postRequest.setRequestHeader('Content-Type', 'text/plain');
         postRequest.send(requestBody);
-
-        // movesLeft = movesLeft - 1;
-        // checkMoves(movesLeft);
     }
     else{
-        // var clickValue = hitValue;
-        // // change clicked button color
-        // gameboard = updateGB(gameboard, clickValue);
-        // if (checkIfSunk){
-        //     if (checkWin(gameDifficulty, hitCounter)){
-        //         // YOU WIN
-        //     }
-        // }
-        // movesLeft = movesLeft - 1;
-        // checkMoves(movesLeft);
+        //add hit class for coloring
+        clickedPoint.classList.add('missed');
+
+        //update json
+        var postRequest = new XMLHttpRequest();
+        var requestURL = '/updategameboard';
+        postRequest.open('POST', requestURL);
+        var requestBody = clickedPoint.id + '@point missed';//@ is the delim
+        console.log(requestBody);
+        postRequest.setRequestHeader('Content-Type', 'text/plain');
+        postRequest.send(requestBody);
     }
+    checkIfLost(count);
 }
 
-function updateGB (currentGameboard, clickValue) {
-    currentGameboard[clickedX][clickedY] == clickValue // clickValue: Battleship: 1,2,3    Miss: 9
-
-    return currentGameboard;
-}
-
-function checkMoves(movesLeft) {
-    if (movesLeft == 0) {
+function checkIfLost(movesLeft) {
+    if (movesLeft <= 0) {
         alert("YOU LOST LOL");
         return true;
     }
@@ -92,22 +97,43 @@ function checkMoves(movesLeft) {
     }
 }
 
-function checkWin (difficulty, hitCounter) {
-    if (difficulty = easy) {
-        if (hitCounter = 5){
-            return true;
-        }
-    }
-    if (difficulty = medium) {
-        if (hitCounter = 6){
-            return true;
-        }
-    }
-    if (difficulty = hard) {
-        if (hitCounter = 6){
-            return true;
+function checkIfSunk(shipToCheck, gblength){
+    for(var i = 0; i < gblength; i++){
+        for(var j = 0; j < gblength; j++){
+            var idString = i.toString() + ',' + j.toString();
+            var point = document.getElementById(idString);
+            
+            if(shipToCheck == 2){
+                if(point.classList.contains('battleship2')){
+                    return false;
+                }
+            }
+            if(shipToCheck == 3){
+                console.log("")
+                if(point.classList.contains('battleship3')){
+                    return false;
+                }
+            }
         }
     }
 
-    return false;
+    alert("Battleship " + shipToCheck + " has been sunk");
+    return true;
+}
+
+function checkIfWon (gblength) {
+    for(var i = 0; i < gblength; i++){
+        for(var j = 0; j < gblength; j++){
+            var idString = i.toString() + ',' + j.toString();
+            var point = document.getElementById(idString);
+            
+            if( point.classList.contains('battleship1') || point.classList.contains('battleship2') || point.classList.contains('battleship3') ){
+                return false;
+            }
+
+        }
+    }
+
+    alert("YOU WON!! WOW!");
+    return true;
 }
