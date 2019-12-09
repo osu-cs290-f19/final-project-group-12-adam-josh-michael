@@ -7,6 +7,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
+var fs = require('fs');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -18,7 +19,8 @@ app.use(bodyParser.text());
 app.use(express.static("public"));
 
 //load in all gamebaords
-var mediumGameboard = require("./gameboards/medium");
+var jsonData = fs.readFileSync('./gameboards/medium.json');
+var mediumGameboard = JSON.parse(jsonData);
 
 //post requests
 app.post("/updategameboard", function(req, res, next){
@@ -71,10 +73,12 @@ app.get("/home", function(req, res) {
 
 //serve up the gameeeee
 app.get("/gamemedium", function(req, res) {
-  mediumGameboard = require("./gameboards/medium");
+  jsonData = fs.readFileSync('./gameboards/medium.json');
+  mediumGameboard = JSON.parse(jsonData);
+
+  //determine gameboard size and init gamebaord
   var gblength = 6;
   var gameboard = Array.from(Array(gblength), () => new Array(gblength));
-  //insert ship placement code here
   for(var i = 0; i < gblength; i++){
     for(var j = 0; j < gblength; j++){
         gameboard[i][j] = 0;
