@@ -69,7 +69,9 @@ app.get("/home", function(req, res) {
   res.status(200).render(__dirname + "/public/home");
 });
 
+//serve up the gameeeee
 app.get("/gamemedium", function(req, res) {
+  mediumGameboard = require("./gameboards/medium");
   var gblength = 6;
   var gameboard = Array.from(Array(gblength), () => new Array(gblength));
   //insert ship placement code here
