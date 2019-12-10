@@ -42,6 +42,18 @@ var count = 24;
 var counter = document.getElementById("counter");
 counter.innerHTML = "Moves: " + count;
 
+//
+for(var i = 0; i < gblength; i++){
+    for(var j = 0; j < gblength; j++){
+        var idString = i.toString() + ',' + j.toString();
+        var point = document.getElementById(idString);
+
+        if (point.classList.contains('battleship1') || point.classList.contains('battleship2') || point.classList.contains('battleship3') || point.classList.contains('hit') || point.classList.contains('missed')) {
+            count - 1;
+        }
+    }
+}
+
 function handleBattleshipClick(clickedPoint) {
     // if clicked again is true then stop check and alert user
 
