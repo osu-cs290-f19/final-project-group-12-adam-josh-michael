@@ -19,10 +19,39 @@ app.use(bodyParser.text());
 app.use(express.static("public"));
 
 //load in all gamebaords
-var jsonData = fs.readFileSync('./gameboards/medium.json');
+var jsonFileToUse = './gameboards/medium.json';
+var jsonData = fs.readFileSync(jsonFileToUse);
 var mediumGameboard = JSON.parse(jsonData);
 
-//post requests
+
+//post requests======================================================================================================
+app.post('/savegame', function(req, res){
+  console.log("saving game");
+  fs.writeFile(
+    './gameboards/save.json', 
+    JSON.stringify(mediumGameboard, 2, null), 
+    function (err){
+      console.log("UH OH");
+    }
+  );
+  res.status(200).send();
+});
+
+app.post("/loadsavedgame", function(req, res) {
+  console.log("loading saved game");
+  jsonData = fs.readFileSync(jsonFileToUse);
+
+  if(jsonData == '[]'){
+    console.log("SERVER failed to load. empty json");
+    jsonFileToUse = './gameboards/medium.json';
+    res.status(500).send();
+  }else{
+    console.log("SERVER loaded saved game");
+    jsonFileToUse = './gameboards/save.json';
+    res.status(200).send();
+  }
+});
+
 app.post("/updategameboard", function(req, res, next){
   //first id string is sent then a space then the class string
 
@@ -71,90 +100,93 @@ app.get("/home", function(req, res) {
   res.status(200).render(__dirname + "/public/home");
 });
 
-//serve up the gameeeee
+//serve up the gameeeee=====================================================================================================================================================
 app.get("/gamemedium", function(req, res) {
-  jsonData = fs.readFileSync('./gameboards/medium.json');
+  jsonData = fs.readFileSync(jsonFileToUse);
   mediumGameboard = JSON.parse(jsonData);
 
-  //determine gameboard size and init gamebaord
-  var gblength = 6;
-  var gameboard = Array.from(Array(gblength), () => new Array(gblength));
-  for(var i = 0; i < gblength; i++){
-    for(var j = 0; j < gblength; j++){
-        gameboard[i][j] = 0;
+  console.log(jsonFileToUse);
+  if(jsonFileToUse == './gameboards/medium.json'){
+    //determine gameboard size and init gamebaord
+    var gblength = 6;
+    var gameboard = Array.from(Array(gblength), () => new Array(gblength));
+    for(var i = 0; i < gblength; i++){
+      for(var j = 0; j < gblength; j++){
+          gameboard[i][j] = 0;
+      }
     }
-  }
-  var battleship1 = 1;
-  var battleship2 = 2;
-  var battleship3 = 3;
+    var battleship1 = 1;
+    var battleship2 = 2;
+    var battleship3 = 3;
 
-  gameboard = placeBattleship(gameboard, battleship3);
-  gameboard = placeBattleship(gameboard, battleship2);
-  gameboard = placeBattleship(gameboard, battleship1);
+    gameboard = placeBattleship(gameboard, battleship3);
+    gameboard = placeBattleship(gameboard, battleship2);
+    gameboard = placeBattleship(gameboard, battleship1);
 
-  console.log ("gameboard: ", gameboard);
+    console.log ("gameboard: ", gameboard);
 
-  //translation from array to json here
-  for(var i = 0; i < 6; i++){
-    for(var j = 0; j < 6; j++){
-      if(gameboard[i][j] == 1){
-        if(j == 0){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+    //translation from array to json here
+    for(var i = 0; i < 6; i++){
+      for(var j = 0; j < 6; j++){
+        if(gameboard[i][j] == 1){
+          if(j == 0){
+            mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship1';
+          }
+          if(j == 1){
+            mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship1';
+          }
+          if(j == 2){
+            mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship1';
+          }
+          if(j == 3){
+            mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship1';
+          }
+          if(j == 4){
+            mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship1';
+          }
+          if(j == 5){
+            mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship1';
+          }
         }
-        if(j == 1){
-          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship1';
+        if(gameboard[i][j] == 2){
+          if(j == 0){
+            mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
+          }
+          if(j == 1){
+            mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship2';
+          }
+          if(j == 2){
+            mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship2';
+          }
+          if(j == 3){
+            mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship2';
+          }
+          if(j == 4){
+            mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship2';
+          }
+          if(j == 5){
+            mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship2';
+          }
         }
-        if(j == 2){
-          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship1';
-        }
-        if(j == 3){
-          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship1';
-        }
-        if(j == 4){
-          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship1';
-        }
-        if(j == 5){
-          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship1';
-        }
-      }
-      if(gameboard[i][j] == 2){
-        if(j == 0){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship2';
-        }
-        if(j == 1){
-          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship2';
-        }
-        if(j == 2){
-          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship2';
-        }
-        if(j == 3){
-          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship2';
-        }
-        if(j == 4){
-          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship2';
-        }
-        if(j == 5){
-          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship2';
-        }
-      }
-      if(gameboard[i][j] == 3){
-        if(j == 0){
-          mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
-        }
-        if(j == 1){
-          mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship3';
-        }
-        if(j == 2){
-          mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship3';
-        }
-        if(j == 3){
-          mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship3';
-        }
-        if(j == 4){
-          mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship3';
-        }
-        if(j == 5){
-          mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship3';
+        if(gameboard[i][j] == 3){
+          if(j == 0){
+            mediumGameboard[i].pointClass0 = mediumGameboard[i].pointClass0 + ' battleship3';
+          }
+          if(j == 1){
+            mediumGameboard[i].pointClass1 = mediumGameboard[i].pointClass1 + ' battleship3';
+          }
+          if(j == 2){
+            mediumGameboard[i].pointClass2 = mediumGameboard[i].pointClass2 + ' battleship3';
+          }
+          if(j == 3){
+            mediumGameboard[i].pointClass3 = mediumGameboard[i].pointClass3 + ' battleship3';
+          }
+          if(j == 4){
+            mediumGameboard[i].pointClass4 = mediumGameboard[i].pointClass4 + ' battleship3';
+          }
+          if(j == 5){
+            mediumGameboard[i].pointClass5 = mediumGameboard[i].pointClass5 + ' battleship3';
+          }
         }
       }
     }

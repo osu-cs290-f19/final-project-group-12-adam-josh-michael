@@ -82,11 +82,17 @@ h1 {
 }
 
 #counter {
-  float: left;
+  margin-left: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 2em;
 }
 
 #saveGame {
-  float: right;
+  margin-right: 0;
+  margin-left: 180px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 button {

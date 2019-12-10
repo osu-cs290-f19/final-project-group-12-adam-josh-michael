@@ -3,6 +3,10 @@ document.addEventListener('click', function (event) {
     var clickedPoint = event.target;
     if ( clickedPoint.classList.contains( 'point' ) ) {
         handleBattleshipClick(clickedPoint);
+    }else if( clickedPoint.id == 'saveGame'){
+        handleSaveGame();
+    }else if( clickedPoint.id == 'loadsavedgame'){
+        handleLoadGame();
     }
 }, false);
 
@@ -144,5 +148,36 @@ function checkIfWon (gblength) {
     }
 
     alert("YOU WON!! WOW!");
+    window.location.href = "http://localhost:3000/";
     return true;
+}
+
+function handleSaveGame(){
+    var postRequest = new XMLHttpRequest();
+    var requestURL = '/savegame';
+    postRequest.open('POST', requestURL);
+    var requestBody = "";
+    console.log(requestBody);
+    postRequest.setRequestHeader('Content-Type', 'text/plain');
+    postRequest.send(requestBody);
+}
+
+function handleLoadGame(){
+    var postRequest = new XMLHttpRequest();
+    var requestURL = "/loadsavedgame";
+    postRequest.open('POST', requestURL);
+    var requestBody = "";
+    console.log(requestBody);
+    postRequest.setRequestHeader('Content-Type', 'text/plain');
+    postRequest.send(requestBody);
+
+    // Loading alert based on status code
+//   fetch(postRequest).then(function(responce){
+//         if (postRequest.status == 200){
+//             alert("Loaded saved game"); 
+//         }
+//         else {
+//             alert("No game loaded");
+//         }
+//     })
 }
