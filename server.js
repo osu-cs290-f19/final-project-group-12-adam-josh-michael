@@ -29,9 +29,8 @@ app.post('/savegame', function(req, res){
   console.log("saving game");
   fs.writeFile(
     './gameboards/save.json', 
-    JSON.stringify(mediumGameboard, 2, null), 
+    JSON.stringify(mediumGameboard, null, 2), 
     function (err){
-      console.log("UH OH");
     }
   );
   res.status(200).send();

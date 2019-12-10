@@ -17,17 +17,15 @@ var counter = document.getElementById("counter");
 counter.innerHTML = "Moves: " + count;
 
 //update moves
-for(var i = 0; i < 6; i++){
-    for(var j = 0; j < 6; j++){
+for(var i = 0; i < gblength; i++){
+    for(var j = 0; j < gblength; j++){
         var idString = i.toString() + ',' + j.toString();
         var point = document.getElementById(idString);
 
         if (point.classList.contains('hit') || point.classList.contains('missed')) {
-            count -= 1;
-            console.log(count);
+            count - 1;
         }
     }
-    counter.innerHTML = "Moves: " + count;
 }
 
 function handleBattleshipClick(clickedPoint) {
@@ -159,5 +157,13 @@ function handleLoadGame(){
     postRequest.setRequestHeader('Content-Type', 'text/plain');
     postRequest.send(requestBody);
 
-    alert("Loaded a game");
+    // Loading alert based on status code
+//   fetch(postRequest).then(function(responce){
+//         if (postRequest.status == 200){
+//             alert("Loaded saved game"); 
+//         }
+//         else {
+//             alert("No game loaded");
+//         }
+//     })
 }
