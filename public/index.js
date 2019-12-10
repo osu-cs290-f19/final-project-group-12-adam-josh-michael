@@ -171,6 +171,7 @@ function handleSaveGame(){
     var requestBody = "";
     console.log(requestBody);
     postRequest.setRequestHeader('Content-Type', 'text/plain');
+    alert("Saving Game");
     postRequest.send(requestBody);
 }
 

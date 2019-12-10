@@ -13,11 +13,10 @@ h1 {
   background-color: #561D25;
   margin-top: 20px;
   margin-bottom: 20px;
-  right: 100px;
-  height: 200px;
   font-size: 50px;
   border-radius: 15px;
   padding: 20px;
+  height: 30px;
 }
 
 .header-title {
