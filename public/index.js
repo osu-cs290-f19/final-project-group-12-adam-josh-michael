@@ -7,6 +7,8 @@ document.addEventListener('click', function (event) {
         handleSaveGame();
     }else if( clickedPoint.id == 'loadsavedgame'){
         handleLoadGame();
+    }else if( clickedPoint.id == 'newGame'){
+        handleNewGame();
     }
 }, false);
 
@@ -14,7 +16,7 @@ document.addEventListener('click', function (event) {
 //initializing counter
 var count = 24;
 var counter = document.getElementById("counter");
-counter.innerHTML = "Moves: " + count;
+counter.innerHTML = "Ammo: " + count;
 
 //update moves
 for(var i = 0; i < 6; i++){
@@ -27,7 +29,7 @@ for(var i = 0; i < 6; i++){
             console.log(count);
         }
     }
-    counter.innerHTML = "Moves: " + count;
+    counter.innerHTML = "Ammo: " + count;
 }
 
 function handleBattleshipClick(clickedPoint) {
@@ -35,7 +37,7 @@ function handleBattleshipClick(clickedPoint) {
 
     //counter
     count -=1;
-    counter.innerHTML = "Moves: " + count;
+    counter.innerHTML = "Ammo: " + count;
 
     if ( clickedPoint.classList.contains('battleship1') || clickedPoint.classList.contains('battleship2') || clickedPoint.classList.contains('battleship3') ) {
         //add hit class for coloring
@@ -161,4 +163,16 @@ function handleLoadGame(){
     postRequest.send(requestBody);
 
     alert("Loaded a game");
+}
+
+function handleNewGame(){
+    var postRequest = new XMLHttpRequest();
+    var requestURL = "/loadnewgame";
+    postRequest.open('POST', requestURL);
+    var requestBody = "";
+    console.log(requestBody);
+    postRequest.setRequestHeader('Content-Type', 'text/plain');
+    postRequest.send(requestBody);
+
+    alert("Loaded a new game");
 }

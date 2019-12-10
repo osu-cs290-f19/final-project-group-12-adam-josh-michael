@@ -1,1 +1,86 @@
-[{"pointClass0":"point","pointClass1":"point","pointClass2":"point","pointClass3":"point battleship1","pointClass4":"point","pointClass5":"point","pointID0":"0,0","pointID1":"0,1","pointID2":"0,2","pointID3":"0,3","pointID4":"0,4","pointID5":"0,5"},{"pointClass0":"point","pointClass1":"point","pointClass2":"point","pointClass3":"point","pointClass4":"point","pointClass5":"point","pointID0":"1,0","pointID1":"1,1","pointID2":"1,2","pointID3":"1,3","pointID4":"1,4","pointID5":"1,5"},{"pointClass0":"point","pointClass1":"point battleship3","pointClass2":"point battleship3","pointClass3":"point hit","pointClass4":"point","pointClass5":"point","pointID0":"2,0","pointID1":"2,1","pointID2":"2,2","pointID3":"2,3","pointID4":"2,4","pointID5":"2,5"},{"pointClass0":"point","pointClass1":"point","pointClass2":"point","pointClass3":"point","pointClass4":"point","pointClass5":"point","pointID0":"3,0","pointID1":"3,1","pointID2":"3,2","pointID3":"3,3","pointID4":"3,4","pointID5":"3,5"},{"pointClass0":"point","pointClass1":"point","pointClass2":"point battleship2","pointClass3":"point","pointClass4":"point","pointClass5":"point","pointID0":"4,0","pointID1":"4,1","pointID2":"4,2","pointID3":"4,3","pointID4":"4,4","pointID5":"4,5"},{"pointClass0":"point","pointClass1":"point","pointClass2":"point battleship2","pointClass3":"point","pointClass4":"point","pointClass5":"point","pointID0":"5,0","pointID1":"5,1","pointID2":"5,2","pointID3":"5,3","pointID4":"5,4","pointID5":"5,5"}]
+[
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point",
+    "pointClass3": "point",
+    "pointClass4": "point",
+    "pointClass5": "point",
+    "pointID0": "0,0",
+    "pointID1": "0,1",
+    "pointID2": "0,2",
+    "pointID3": "0,3",
+    "pointID4": "0,4",
+    "pointID5": "0,5"
+  },
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point",
+    "pointClass3": "point",
+    "pointClass4": "point missed",
+    "pointClass5": "point missed",
+    "pointID0": "1,0",
+    "pointID1": "1,1",
+    "pointID2": "1,2",
+    "pointID3": "1,3",
+    "pointID4": "1,4",
+    "pointID5": "1,5"
+  },
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point hit",
+    "pointClass3": "point hit",
+    "pointClass4": "point hit",
+    "pointClass5": "point hit",
+    "pointID0": "2,0",
+    "pointID1": "2,1",
+    "pointID2": "2,2",
+    "pointID3": "2,3",
+    "pointID4": "2,4",
+    "pointID5": "2,5"
+  },
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point",
+    "pointClass3": "point missed",
+    "pointClass4": "point missed",
+    "pointClass5": "point",
+    "pointID0": "3,0",
+    "pointID1": "3,1",
+    "pointID2": "3,2",
+    "pointID3": "3,3",
+    "pointID4": "3,4",
+    "pointID5": "3,5"
+  },
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point",
+    "pointClass3": "point",
+    "pointClass4": "point battleship2",
+    "pointClass5": "point",
+    "pointID0": "4,0",
+    "pointID1": "4,1",
+    "pointID2": "4,2",
+    "pointID3": "4,3",
+    "pointID4": "4,4",
+    "pointID5": "4,5"
+  },
+  {
+    "pointClass0": "point",
+    "pointClass1": "point",
+    "pointClass2": "point",
+    "pointClass3": "point",
+    "pointClass4": "point battleship2",
+    "pointClass5": "point",
+    "pointID0": "5,0",
+    "pointID1": "5,1",
+    "pointID2": "5,2",
+    "pointID3": "5,3",
+    "pointID4": "5,4",
+    "pointID5": "5,5"
+  }
+]

@@ -36,6 +36,12 @@ app.post('/savegame', function(req, res){
   res.status(200).send();
 });
 
+app.post('/loadnewgame', function(req, res){
+  console.log("loading new game");
+  jsonFileToUse = './gameboards/medium.json';
+  res.status(200).send();
+});
+
 app.post("/loadsavedgame", function(req, res) {
   console.log("loading saved game");
   jsonData = fs.readFileSync(jsonFileToUse);
