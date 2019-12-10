@@ -93,6 +93,7 @@ function handleBattleshipClick(clickedPoint) {
 function checkIfLost(movesLeft) {
     if (movesLeft <= 0) {
         alert("YOU LOST LOL");
+        window.location.href = "http://localhost:3000/";
         return true;
     }
     else {

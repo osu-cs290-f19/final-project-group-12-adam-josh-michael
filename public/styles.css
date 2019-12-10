@@ -19,6 +19,9 @@ h1 {
   padding: 20px;
   height: 125px;
 }
+.btn-secondary:hover {
+  cursor: pointer;
+}
 
 .header-title {
   color: white;
