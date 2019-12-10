@@ -51,10 +51,12 @@ h1 {
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .tutorialImg {
   display: flex;
+  text-align: center;
 }
 
 .point {
@@ -79,6 +81,7 @@ h1 {
 
 .bottomText {
   margin-top: 30px;
+  text-align: center;
 }
 
 #counter {
